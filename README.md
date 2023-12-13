@@ -30,10 +30,68 @@ If you want to be able to run the executable from anywhere on your system, you'l
 
 On Windows just search for env and click on Edit the system environment variables. Then click on Environment Variables. Under System variables, find the variable named Path and click Edit. Click New and add the path to the directory where your executable is located. Click OK to save the changes and voila.
 
+I like to save my executables in a folder called bin in my user directory. So I add the following to my PATH:
+
+```bash
+C:\Users\immi\local-scripts\execs
+```
+Makes things easier to add to path, find and manage.
 ### 6. Run the Executable
-navigate to the directory you want to print the tree of and run the following command:
+Navigate to the directory you want to print the tree of and run the following command:
 ```bash
 dir-tree
 ```
 it should produce something like this:
 
+```bash
+Directory structure of: C:\Users\immi\PyCharmProjects\Templates\api
+├─app/
+│   ├─api/
+│   │   ├─v1/
+│   │   │   ├─routers_1.py
+│   │   │   ├─routers_2.py
+│   │   │   └─__init__.py
+│   │   ├─deps.py
+│   │   └─__init__.py
+│   ├─core/
+│   │   ├─config.py
+│   │   ├─params.yml
+│   │   └─__init__.py
+│   ├─crud/
+│   │   └─__init__.py
+│   ├─database/
+│   │   ├─base_class.py
+│   │   ├─initialize.py
+│   │   ├─session.py
+│   │   └─__init__.py
+│   ├─exceptions/
+│   │   └─__init__.py
+│   ├─models/
+│   │   └─__init__.py
+│   ├─schemas/
+│   │   └─__init__.py
+│   ├─services/
+│   │   ├─external_services/
+│   │   │   └─__init__.py
+│   │   └─__init__.py
+│   ├─utils/
+│   │   └─__init__.py
+│   ├─main.py
+│   └─__init__.py
+├─credentials/
+├─migrations/
+│   └─versions/
+├─tests/
+│   ├─integration/
+│   ├─unit/
+│   └─configure_test.py
+├─.env
+├─.gitignore
+├─.gitlab-ci.yml
+├─alembic.ini
+├─docker-compose.yml
+├─Dockerfile
+├─LICENSE
+├─README.md
+└─requirements.txt
+```
