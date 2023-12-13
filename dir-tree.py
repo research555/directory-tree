@@ -1,7 +1,10 @@
 import os
 import sys
+import pyperclip
 
 def list_directory_structure(startpath):
+    output = []
+
     def print_tree(folder, prefix=''):
         dirs = [d for d in os.listdir(folder) if os.path.isdir(os.path.join(folder, d))]
         files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
@@ -19,14 +22,15 @@ def list_directory_structure(startpath):
 
         for pointer, name in zip(pointers, contents):
             path = os.path.join(folder, name)
+            line = f'{prefix}{pointer}{name}/' if os.path.isdir(path) else f'{prefix}{pointer}{name}'
+            print(line)
+            output.append(line)
             if os.path.isdir(path):
-                print(f'{prefix}{pointer}{name}/')
                 extension = '│   ' if pointer == '├─' else '    '
                 print_tree(path, prefix=prefix+extension)
-            else:
-                print(f'{prefix}{pointer}{name}')
 
     print_tree(startpath)
+    return '\n'.join(output)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -35,4 +39,7 @@ if __name__ == "__main__":
         directory = os.getcwd()
 
     print(f"Directory structure of: {directory}")
-    list_directory_structure(directory)
+    directory_structure = list_directory_structure(directory)
+
+    pyperclip.copy(directory_structure)
+    print("\nDirectory structure copied to clipboard!")
